@@ -4,8 +4,14 @@
 @tailwind utilities;
 html {
   font-family: "Inter", sans-serif;
-  line-height: 7.5vw;
 }
+
+@media (min-width: 768px) {
+  #matters li:hover {
+    text-shadow: 0 0 5px #fff;
+  }
+}
+
 @supports (font-variation-settings: normal) {
   html {
     font-family: "Inter var", sans-serif;
