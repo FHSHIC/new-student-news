@@ -34,7 +34,7 @@
   <!-- 封面 -->
   <div id="header" class="w-full">
     <img src="/assets/phone.jpeg" alt="" class="md:hidden" />
-    <img src="/assets/computer.jpeg" alt="" />
+    <img src="/assets/computer.jpeg" alt="" class="hidden md:flex" />
   </div>
   <!-- 時程表 -->
   <div id="timeline" class="flex w-full flex-col items-center justify-center">
@@ -83,17 +83,18 @@
     <div
       class="mt-5 grid grid-cols-1 items-center justify-center gap-5 md:grid-cols-3 md:gap-3"
     >
-      <a
+      <button
         v-for="check in datas.checks"
+        ref="checksRef"
         :href="check.href"
         :key="check.id"
-        class="flex h-[62.5vw] w-[62.5vw] flex-col items-center justify-center rounded-[20px] bg-[#34559D] text-center text-[6.25vw] font-semibold leading-[7vw] hover:border-[5px] hover:border-white md:h-[240px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
+        class="flex h-[62.5vw] w-[62.5vw] flex-col items-center justify-center rounded-[20px] bg-[#34559D] text-center text-[6.25vw] font-semibold leading-[7vw] hover:border-[5px] hover:border-white disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-0 md:h-[240px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
       >
         <p class="pointer-events-none text-white" v-html="check.name"></p>
         <p class="pointer-events-none text-[#EC6261]" v-html="check.time"></p>
         <p class="pointer-events-none text-white" v-html="check.name2"></p>
         <p class="pointer-events-none text-[#EC6261]" v-html="check.time2"></p>
-      </a>
+      </button>
     </div>
     <div class="h-5 md:h-10"></div>
     <div>
@@ -149,16 +150,25 @@
       />
     </div>
     <div
-      class="flex w-full flex-col items-center space-y-[29.29px] py-4 md:flex-row md:justify-evenly"
+      class="flex w-full flex-col items-center space-y-[29.29px] py-4 md:flex-row md:justify-evenly md:space-y-0"
     >
-      <a href="" class="w-[31.25vw] md:w-[120px]">
-        <img src="/assets/book1.png" class="py-4" alt="作業說明" />
+      <a
+        href=""
+        class="flex w-[31.25vw] items-center justify-center md:w-[120px]"
+      >
+        <img src="/assets/book1.png" class="" alt="作業說明" />
       </a>
-      <a href="" class="w-[31.25vw] md:w-[120px]">
-        <img src="/assets/book2.png" class="py-4" alt="暑假作業" />
+      <a
+        href=""
+        class="flex w-[31.25vw] items-center justify-center md:w-[120px]"
+      >
+        <img src="/assets/book2.png" class="" alt="暑假作業" />
       </a>
-      <a href="" class="w-[31.25vw] md:w-[120px]">
-        <img src="/assets/book3.png" class="py-4" alt="銜接教材" />
+      <a
+        href=""
+        class="flex w-[31.25vw] items-center justify-center md:w-[120px]"
+      >
+        <img src="/assets/book3.png" class="" alt="銜接教材" />
       </a>
     </div>
     <div class="w-full">
@@ -320,14 +330,14 @@
     <div
       class="grid grid-cols-1 gap-y-5 gap-x-10 text-[6.25vw] font-semibold text-white md:grid-cols-2 md:text-[24px] lg:grid-cols-3"
     >
-      <a
+      <button
         v-for="date in datas.dates"
         :href="date.href"
         :key="date.id"
-        class="flex h-[31.25vw] w-[68.75vw] items-center justify-center rounded-[10px] bg-[#EC6261] text-center hover:border-[5px] hover:border-white md:h-[120px] md:w-[264px] md:leading-[28.8px]"
+        class="flex h-[31.25vw] w-[68.75vw] items-center justify-center rounded-[10px] bg-[#EC6261] text-center hover:border-[5px] hover:border-white disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-0 md:h-[120px] md:w-[264px] md:leading-[28.8px]"
       >
         {{ date.name }}<br />{{ date.name2 }}<br />{{ date.time }}
-      </a>
+      </button>
     </div>
   </div>
   <!-- 宣導事項 -->
@@ -529,29 +539,13 @@ document.onclick = function (e) {
     document.getElementById("jump").classList.add("-translate-x-[62.5vw]");
   }
 };
-
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 export default {
   setup() {
     const jump = function () {
       jumpFuntion();
     };
-
-    const fetchOption = {
-      mode: "no-cors",
-    };
-
-    const url = "https://freshman-api.fhsh.tp.edu.tw/api/v1";
-    fetch(url, fetchOption)
-      .then((response) => {
-        return response.json();
-      })
-      .then((jsonData) => {
-        console.log(jsonData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const checksRef = ref([]);
 
     const datas = reactive({
       lists: [
@@ -603,19 +597,21 @@ export default {
       ],
       checks: [
         {
-          href: "#",
+          href: "",
           id: "c1",
           name: "普通班免試<br>新生線上報到<br>(優免/安置上傳畢證)",
           time: "7月19日11:00<br>~7月21日11:00",
+          announceTime: new Date("2022-07-19T11:00:00+08:00").getTime(),
+          expiredTime: new Date("2022-07-21T11:00:00+08:00").getTime(),
         },
         {
-          href: "#",
+          href: "",
           id: "c2",
           name: "體育班<br>新生上傳畢證",
           time: "7月19日11:00<br>~7月21日12:00",
         },
         {
-          href: "#",
+          href: "",
           id: "c3",
           name: "戲劇班<br>正取生線上報到",
           time: "7月19日09:00<br>~7月20日12:00",
@@ -623,19 +619,19 @@ export default {
           time2: "7月20日17:00<br>~7月21日12:00",
         },
         {
-          href: "#",
+          href: "",
           id: "c4",
           name: "音樂班<br>新生線上報到",
           time: "7月19日11:00<br>~7月20日12:00",
         },
         {
-          href: "#",
+          href: "",
           id: "c5",
           name: "美術班<br>新生線上報到<br>(已經上傳畢證)",
           time: "7月19日11:00<br>~7月20日12:00",
         },
         {
-          href: "#",
+          href: "",
           id: "c6",
           name: "舞蹈班<br>新生線上報到",
           time: "7月19日11:00<br>~7月20日11:00",
@@ -728,73 +724,73 @@ export default {
       ],
       dates: [
         {
-          href: "#",
+          href: "",
           id: "d1",
           name: "新生始業輔導",
           name2: "實施計畫",
           time: "(8/16公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d2",
           name: "高一編班座號學號",
           time: "(8/19公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d3",
           name: "新生住宿名單",
           time: "(8/19 16:00公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d4",
           name: "新生始業輔導手冊",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d5",
           name: "開學日實施計畫",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d6",
           name: "學生開學日",
           name2: "領取教科書",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d7",
           name: "新生開學日",
           name2: "領取校服",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d8",
           name: "學生信箱與",
           name2: "單一身分帳號",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d9",
           name: "學生家長",
           name2: "校務行政系統說明",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d10",
           name: "校園繳費系統",
           name2: "親子身分綁定",
           time: "(8/23公告)",
         },
         {
-          href: "#",
+          href: "",
           id: "d11",
           name: "110-1學期行事曆",
           time: "(8/24公告)",
@@ -899,9 +895,46 @@ export default {
       ],
     });
 
+    const url = "https://freshman-api.fhsh.tp.edu.tw/api/v1/fresh-datas";
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonData) => {
+        console.log(jsonData);
+        datas.checks = jsonData[0].details;
+        // 學校簡介
+        // 暑假作業
+        // matter1~5
+        datas.dates = jsonData[4].details;
+        datas.pubs = jsonData[5].details;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    Object.values(datas).forEach((title) => {
+      Object.values(title).forEach((details) => {
+        if (
+          details.announceTime > Date.now() ||
+          details.expiredTime < Date.now()
+        ) {
+          // checksRef.value[0].setAttribute("disabled", "");
+          console.log(checksRef.value[2]);
+        }
+        if (
+          details.announceTime < Date.now() ||
+          details.expiredTime > Date.now()
+        ) {
+          // checksRef.value[0].removeAttribute("disabled");
+        }
+      });
+    });
+
     return {
       jump,
       datas,
+      checksRef,
     };
   },
 };
