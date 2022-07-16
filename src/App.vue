@@ -11,10 +11,10 @@
   </div>
   <div
     id="jump"
-    class="fixed z-50 flex w-[62.5vw] -translate-x-[62.5vw] flex-col items-center bg-[#34559D] p-[18px] duration-200 md:w-[240px]"
+    class="fixed z-50 flex max-h-screen w-[62.5vw] -translate-x-[62.5vw] flex-col items-center overflow-auto bg-[#34559D] p-[18px] duration-200 md:w-[240px]"
   >
     <div class="pointer-events-none w-[37.5vw] md:w-[144px]">
-      <img src="/assets/Freshmen-area-content.PNG" alt="" />
+      <img src="../public/assets/Freshmen-area-content.png" alt="" />
     </div>
     <div class="h-[15px]"></div>
     <ul
@@ -33,32 +33,42 @@
   </div>
   <!-- 封面 -->
   <div id="header" class="w-full">
-    <img src="/assets/phone.jpeg" alt="" class="md:hidden" />
-    <img src="/assets/computer.jpeg" alt="" class="hidden md:flex" />
+    <img src="../public/assets/phone.jpeg" alt="" class="md:hidden" />
+    <img src="../public/assets/computer.jpeg" alt="" class="hidden md:flex" />
   </div>
   <!-- 時程表 -->
   <div id="timeline" class="flex w-full flex-col items-center justify-center">
-    <div class="w-[59.375vw] md:w-[228px]">
+    <div class="w-3/4 max-w-sm pb-4 md:pb-8">
       <img
-        src="/assets/Freshman-Admission-Schedule.png"
+        src="../public/assets/Freshman-Admission-Schedule.png"
         class=""
         alt="新生入學時程表"
       />
     </div>
     <div
-      class="flex w-full place-items-center items-center justify-center md:w-[500px]"
+      class="flex w-full place-items-center items-center justify-center md:w-3/4"
     >
-      <img src="/assets/timeline-phone.png" class="md:hidden" alt="時程表" />
-      <img src="/assets/Timeline.png" class="hidden md:flex" alt="" />
+      <img
+        src="../public/assets/timeline-phone.png"
+        class="md:hidden"
+        alt="時程表"
+      />
+      <img src="../public/assets/Timeline.png" class="hidden md:flex" alt="" />
     </div>
     <div class="w-full">
-      <img src="/assets/Background1.jpeg" alt="" />
+      <img src="../public/assets/Background1.jpeg" alt="" />
     </div>
   </div>
   <!-- 新生報到 -->
-  <div id="register" class="flex w-full flex-col items-center bg-[#EC6261]">
-    <div class="w-[59.375vw] md:w-[228px]">
-      <img src="/assets/Online-registration-for-new-students.png" alt="" />
+  <div
+    id="register"
+    class="flex w-full flex-col items-center bg-[#EC6261] pb-16"
+  >
+    <div class="w-3/4 max-w-sm">
+      <img
+        src="../public/assets/Online-registration-for-new-students.png"
+        alt=""
+      />
     </div>
     <div
       class="grid grid-rows-3 place-items-center gap-y-[12px] bg-inherit md:grid-flow-col md:grid-rows-2 md:gap-y-0 md:gap-x-[100px] md:border-[10px] md:border-[#D85756] md:bg-[#E8C541] md:p-5"
@@ -97,10 +107,10 @@
       </button>
     </div>
     <div class="h-5 md:h-10"></div>
-    <div>
+    <div class="w-full text-center">
       <a
         href=""
-        class="flex h-[15.625vw] w-[87.5vw] items-center justify-center rounded-xl bg-[#E8C541] text-[6.25vw] font-semibold text-white hover:border-[5px] hover:border-white md:h-[60px] md:w-[336px] md:text-[24px]"
+        class="mx-auto flex h-[15.625vw] w-[87.5vw] items-center justify-center rounded-xl bg-[#E8C541] text-[6.25vw] font-semibold text-white hover:border-[5px] hover:border-white md:h-[80px] md:w-3/4 md:text-[24px]"
       >
         <p>選課輔導手冊(普通班)</p>
       </a>
@@ -112,8 +122,8 @@
     id="briefing"
     class="relative flex w-full flex-col items-center bg-[#EC6261] pt-3"
   >
-    <div class="w-[59.375vw] md:w-[228px]">
-      <img src="/assets/Admissions-Briefing.png" alt="" />
+    <div class="w-3/4 max-w-sm">
+      <img src="../public/assets/Admissions-Briefing.png" alt="" />
     </div>
     <div class="h-8"></div>
     <iframe
@@ -124,27 +134,29 @@
     <div
       class="absolute left-0 bottom-28 w-[28.125vw] md:w-[216px] lg:left-16 lg:bottom-52"
     >
-      <img src="/assets/girl.PNG" alt="" />
+      <img src="../public/assets/girl.png" alt="" />
     </div>
     <div class="h-20 md:h-10"></div>
-    <div class="flex w-full items-center justify-center bg-[#EC6261]">
+    <div
+      id="line"
+      class="flex w-full items-center justify-center bg-[#EC6261] pb-6 pt-10"
+    >
       <a
         href=""
-        id="line"
         class="z-10 w-[67.812vw] rounded-[10px] border-[3px] border-white bg-[#009A35] py-2 text-center text-[5vw] font-semibold text-white hover:shadow-[0_0_15px_#fff] md:w-[660px] md:py-2 md:text-[19.2px]"
       >
         <p class="pointer-events-none">高一家長LINE@群組</p>
       </a>
     </div>
     <div class="w-full">
-      <img src="/assets/Background2.jpeg" alt="" />
+      <img src="../public/assets/Background2.jpeg" alt="" />
     </div>
   </div>
   <!-- 暑假作業 -->
   <div id="homework" class="flex w-full flex-col items-center bg-[#e8c541]">
     <div class="w-[59.275vw] md:w-[288px]">
       <img
-        src="/assets/Summer-homework-for-freshmen.png"
+        src="../public/assets/Summer-homework-for-freshmen.png"
         class=""
         alt="新生暑假作業"
       />
@@ -156,23 +168,23 @@
         href=""
         class="flex w-[31.25vw] items-center justify-center md:w-[120px]"
       >
-        <img src="/assets/book1.png" class="" alt="作業說明" />
+        <img src="../public/assets/book1.png" class="" alt="作業說明" />
       </a>
       <a
         href=""
         class="flex w-[31.25vw] items-center justify-center md:w-[120px]"
       >
-        <img src="/assets/book2.png" class="" alt="暑假作業" />
+        <img src="../public/assets/book2.png" class="" alt="暑假作業" />
       </a>
       <a
         href=""
         class="flex w-[31.25vw] items-center justify-center md:w-[120px]"
       >
-        <img src="/assets/book3.png" class="" alt="銜接教材" />
+        <img src="../public/assets/book3.png" class="" alt="銜接教材" />
       </a>
     </div>
     <div class="w-full">
-      <img src="/assets/Background3.jpeg" class="" id="" />
+      <img src="../public/assets/Background3.jpeg" class="" id="" />
     </div>
   </div>
   <!-- 應辦事項 -->
@@ -181,7 +193,11 @@
     class="relative flex w-full flex-col items-center bg-[#34559D] py-5"
   >
     <div class="w-[81.25vw] md:w-[312px]">
-      <img src="/assets/Freshmen-should-do.png" class="w-full" alt="" />
+      <img
+        src="../public/assets/Freshmen-should-do.png"
+        class="w-full"
+        alt=""
+      />
     </div>
     <div class="h-8"></div>
     <div
@@ -314,7 +330,7 @@
     </div>
     <div class="w-full place-items-start pt-3 md:pt-0">
       <div class="w-[59.375vw] md:w-[288px]">
-        <img src="/assets/boy.PNG" alt="" />
+        <img src="../public/assets/boy.png" alt="" />
       </div>
     </div>
   </div>
@@ -324,7 +340,7 @@
     class="flex w-full flex-col items-center bg-[#E8C541] pt-[20px] pb-[50px]"
   >
     <div class="pointer-events-none w-[87.5vw] md:w-[336px]">
-      <img src="/assets/date.png" alt="" class="w-full" />
+      <img src="../public/assets/date.png" alt="" class="w-full" />
     </div>
     <div class="h-[24px]"></div>
     <div
@@ -346,24 +362,24 @@
     class="flex w-full flex-col items-center bg-[#34559D] pt-[10px]"
   >
     <div class="pointer-events-none w-[84.375vw] md:w-[324px]">
-      <img src="/assets/Publicity-matters.png" alt="" class="w-full" />
+      <img src="../public/assets/Publicity-matters.png" alt="" class="w-full" />
     </div>
     <div class="h-[26px]"></div>
     <div
-      class="grid grid-cols-2 gap-x-[4.687vw] gap-y-[25vw] md:grid-cols-3 md:gap-x-[18px] md:gap-y-[81px] lg:grid-cols-5"
+      class="grid grid-cols-2 gap-x-[4.687vw] gap-y-[25vw] md:grid-cols-3 md:gap-x-[18px] md:gap-y-[81px] lg:grid-cols-4"
     >
       <a
         v-for="pub in datas.pubs"
         :href="pub.href"
         :key="pub.id"
-        class="group w-[42.187vw] text-center hover:w-[165px] md:w-[162px]"
+        class="group w-[42.187vw] text-center hover:w-[206px] md:w-[221px] md:hover:scale-110"
       >
         <div class="relative">
           <div
-            class="absolute top-[10px] right-0 h-[12.5vw] w-[40.625vw] rounded-full bg-[#E8C541] group-hover:shadow-[0_0_15px_#fff] md:h-[48px] md:w-[156px]"
+            class="absolute top-[10px] right-0 h-[12.5vw] w-[40.625vw] rounded-full bg-[#E8C541] group-hover:shadow-[0_0_15px_#fff] md:h-[48px] md:w-[200px]"
           ></div>
           <div
-            class="absolute left-0 top-0 flex h-[12.5vw] w-[40.625vw] items-center justify-center rounded-full bg-white md:h-[48px] md:w-[156px]"
+            class="absolute left-0 top-0 flex h-[12.5vw] w-[40.625vw] items-center justify-center rounded-full bg-white md:h-[48px] md:w-[200px]"
           >
             <p
               v-html="pub.name"
@@ -375,13 +391,13 @@
     </div>
     <div class="h-[14vw]"></div>
     <div class="w-full">
-      <img src="/assets/Background4.png" alt="" class="w-full" />
+      <img src="../public/assets/Background4.png" alt="" class="w-full" />
     </div>
   </div>
   <!-- 學校簡介 -->
   <div id="profile" class="flex w-full flex-col items-center bg-[#EC6261]">
     <div class="flex w-[50vw] items-center justify-center md:w-[192px]">
-      <img src="/assets/School-Profile.PNG" alt="學校簡介" />
+      <img src="../public/assets/School-Profile.png" alt="學校簡介" />
     </div>
     <div
       class="item-center grid grid-cols-2 justify-center gap-5 px-[20px] py-5 lg:grid-cols-3"
@@ -390,14 +406,14 @@
         <iframe
           class="peer w-[37.5vw] md:w-[288px]"
           width="640"
-          src="https://www.youtube.com/embed/goL1TnVES0M"
-          title="臺北市立復興高級中學自主學習尋夢計畫"
+          src="https://www.youtube.com/embed/q5qYnNstpx4"
+          title="校長提醒新生的五件事"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <img
-          src="/assets/Principal-room.png"
+          src="../public/assets/Principal-room.png"
           class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
           alt="校長室"
         />
@@ -406,30 +422,14 @@
         <iframe
           class="peer w-[37.5vw] md:w-[288px]"
           width="640"
-          src="https://www.youtube.com/embed/goL1TnVES0M"
-          title="臺北市立復興高級中學自主學習尋夢計畫"
+          src="https://www.youtube.com/embed/fh2W_gLNmLk"
+          title="學務處介紹"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <img
-          src="/assets/Academic-Affairs-Office.png"
-          class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
-          alt="教務處"
-        />
-      </div>
-      <div class="flex flex-col items-center">
-        <iframe
-          class="peer w-[37.5vw] md:w-[288px]"
-          width="640"
-          src="https://www.youtube.com/embed/goL1TnVES0M"
-          title="臺北市立復興高級中學自主學習尋夢計畫"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        <img
-          src="/assets/Academic-Affairs-Office(1).png"
+          src="../public/assets/Academic-Affairs-Office.png"
           class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
           alt="學務處"
         />
@@ -438,14 +438,30 @@
         <iframe
           class="peer w-[37.5vw] md:w-[288px]"
           width="640"
-          src="https://www.youtube.com/embed/goL1TnVES0M"
-          title="臺北市立復興高級中學自主學習尋夢計畫"
+          src="https://www.youtube.com/embed/OIUsy9nOOMo"
+          title="教務處介紹"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <img
-          src="/assets/library.png"
+          src="../public/assets/Academic-Affairs-Office(1).png"
+          class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
+          alt="教務處"
+        />
+      </div>
+      <div class="flex flex-col items-center">
+        <iframe
+          class="peer w-[37.5vw] md:w-[288px]"
+          width="640"
+          src="https://www.youtube.com/embed/01ero8fms_4"
+          title="110新生圖書館介紹"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <img
+          src="../public/assets/library.png"
           class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
           alt="圖書館"
         />
@@ -454,14 +470,14 @@
         <iframe
           class="peer w-[37.5vw] md:w-[288px]"
           width="640"
-          src="https://www.youtube.com/embed/goL1TnVES0M"
-          title="臺北市立復興高級中學自主學習尋夢計畫"
+          src="https://www.youtube.com/embed/edvqAHzOGeg"
+          title="110輔導室介紹 打開輔導的通關密語"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <img
-          src="/assets/Counseling-Room.png"
+          src="../public/assets/Counseling-Room.png"
           class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
           alt="輔導室"
         />
@@ -470,14 +486,14 @@
         <iframe
           class="peer w-[37.5vw] md:w-[288px]"
           width="640"
-          src="https://www.youtube.com/embed/goL1TnVES0M"
-          title="臺北市立復興高級中學自主學習尋夢計畫"
+          src="https://www.youtube.com/embed/cMlbD0RmBG0"
+          title="110學年度新生 總務處介紹"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <img
-          src="/assets/General-Services.png"
+          src="../public/assets/General-Services.png"
           class="w-[25vw] hover:w-[110px] peer-hover:w-[110px] md:w-[96px]"
           alt="總務處"
         />
@@ -920,7 +936,7 @@ export default {
           details.expiredTime < Date.now()
         ) {
           // checksRef.value[0].setAttribute("disabled", "");
-          console.log(checksRef.value[2]);
+          console.log(checksRef.value[0]);
         }
         if (
           details.announceTime < Date.now() ||
