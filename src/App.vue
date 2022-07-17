@@ -172,7 +172,7 @@
     <div class="h-8"></div>
     <iframe
       class="h-[51.953vw] w-[78.125vw] md:h-[400px] md:w-[600px]"
-      src="https://drive.google.com/file/d/1Dgj6tUN1JNS22Dc6OIrYsD9JQH3IYNQM/preview"
+      :src="datas[1].details[2].link"
       allow="autoplay"
     ></iframe>
     <div
@@ -186,7 +186,7 @@
       class="flex w-full items-center justify-center bg-[#EC6261] pb-6 pt-10"
     >
       <a
-        href=""
+        :href="datas[1].details[6].link"
         target="_blank"
         class="z-10 w-[67.812vw] rounded-[10px] border-[3px] border-white bg-[#009A35] py-2 text-center text-[5vw] font-semibold text-white md:w-[660px] md:py-2 md:text-[19.2px] md:hover:shadow-[0_0_15px_#fff]"
       >
@@ -259,33 +259,6 @@
           <div
             class="absolute flex h-[25vw] w-[62.5vw] items-center justify-center border-2 border-black bg-white text-center text-[6.25vw] font-bold md:h-[96px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
           >
-            <p>學雜費減免申請<br />(選辦)</p>
-          </div>
-        </div>
-        <div class="h-[30vw] md:h-[115px]"></div>
-        <ul
-          class="mt-5 flex list-disc flex-col gap-y-3 pl-7 text-[5vw] font-semibold text-white md:text-[19.2px] md:leading-[28.8px]"
-        >
-          <a
-            :href="matter.link"
-            :key="matter.id"
-            target="_blank"
-            v-for="matter in datas[3].details[0]"
-          >
-            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
-          </a>
-        </ul>
-      </div>
-      <div
-        class="w-[71.875vw] md:row-span-1 md:w-[276px] md:-translate-y-[50px]"
-      >
-        <div class="relative">
-          <div
-            class="absolute left-[10px] top-[10px] h-[25vw] w-[62.5vw] bg-[#E8C541] md:h-[96px] md:w-[240px]"
-          ></div>
-          <div
-            class="absolute flex h-[25vw] w-[62.5vw] items-center justify-center border-2 border-black bg-white text-center text-[6.25vw] font-bold md:h-[96px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
-          >
             <p>線上訂購校服<br />(超商繳費)</p>
           </div>
         </div>
@@ -297,32 +270,7 @@
             :href="matter.link"
             :key="matter.id"
             target="_blank"
-            v-for="matter in datas[3].details[1]"
-          >
-            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
-          </a>
-        </ul>
-      </div>
-      <div class="w-[71.875vw] md:row-span-1 md:w-[276px]">
-        <div class="relative">
-          <div
-            class="absolute left-[10px] top-[10px] h-[25vw] w-[62.5vw] bg-[#E8C541] md:h-[96px] md:w-[240px]"
-          ></div>
-          <div
-            class="absolute flex h-[25vw] w-[62.5vw] items-center justify-center border-2 border-black bg-white text-center text-[6.25vw] font-bold md:h-[96px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
-          >
-            <p>就學貸款申請<br />(選辦)</p>
-          </div>
-        </div>
-        <div class="h-[30vw] md:h-[115px]"></div>
-        <ul
-          class="mt-5 flex list-disc flex-col gap-y-3 pl-7 text-[5vw] font-semibold text-white md:text-[19.2px] md:leading-[28.8px]"
-        >
-          <a
-            :href="matter.link"
-            :key="matter.id"
-            target="_blank"
-            v-for="matter in datas[3].details[2]"
+            v-for="matter in datas[3].details[0]"
           >
             <li v-html="matter.title" class="md:hover:text-[20px]"></li>
           </a>
@@ -347,6 +295,56 @@
             :href="matter.link"
             :key="matter.id"
             target="_blank"
+            v-for="matter in datas[3].details[1]"
+          >
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
+          </a>
+        </ul>
+      </div>
+      <div class="w-[71.875vw] md:row-span-1 md:w-[276px]">
+        <div class="relative">
+          <div
+            class="absolute left-[10px] top-[10px] h-[25vw] w-[62.5vw] bg-[#E8C541] md:h-[96px] md:w-[240px]"
+          ></div>
+          <div
+            class="absolute flex h-[25vw] w-[62.5vw] items-center justify-center border-2 border-black bg-white text-center text-[6.25vw] font-bold md:h-[96px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
+          >
+            <p>學雜費減免申請<br />(選辦)</p>
+          </div>
+        </div>
+        <div class="h-[30vw] md:h-[115px]"></div>
+        <ul
+          class="mt-5 flex list-disc flex-col gap-y-3 pl-7 text-[5vw] font-semibold text-white md:text-[19.2px] md:leading-[28.8px]"
+        >
+          <a
+            :href="matter.link"
+            :key="matter.id"
+            target="_blank"
+            v-for="matter in datas[3].details[2]"
+          >
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
+          </a>
+        </ul>
+      </div>
+      <div class="w-[71.875vw] md:row-span-1 md:w-[276px]">
+        <div class="relative">
+          <div
+            class="absolute left-[10px] top-[10px] h-[25vw] w-[62.5vw] bg-[#E8C541] md:h-[96px] md:w-[240px]"
+          ></div>
+          <div
+            class="absolute flex h-[25vw] w-[62.5vw] items-center justify-center border-2 border-black bg-white text-center text-[6.25vw] font-bold md:h-[96px] md:w-[240px] md:text-[24px] md:leading-[28.8px]"
+          >
+            <p>就學貸款申請<br />(選辦)</p>
+          </div>
+        </div>
+        <div class="h-[30vw] md:h-[115px]"></div>
+        <ul
+          class="mt-5 flex list-disc flex-col gap-y-3 pl-7 text-[5vw] font-semibold text-white md:text-[19.2px] md:leading-[28.8px]"
+        >
+          <a
+            :href="matter.link"
+            :key="matter.id"
+            target="_blank"
             v-for="matter in datas[3].details[3]"
           >
             <li v-html="matter.title" class="md:hover:text-[20px]"></li>
@@ -354,7 +352,7 @@
         </ul>
       </div>
       <div
-        class="w-[71.875vw] md:row-span-1 md:w-[276px] lg:-translate-y-[50px]"
+        class="w-[71.875vw] md:row-span-1 md:w-[276px] md:-translate-y-[50px] lg:translate-y-[0px]"
       >
         <div class="relative">
           <div
@@ -646,8 +644,8 @@ export default {
             id: "c2",
             title: "體育班<br>新生上傳畢業證書",
             time: "7月19日11:00<br>~7月21日12:00",
-            announceTime: new Date("2022-07-13T11:00:00+08:00").getTime(),
-            expiredTime: new Date("2022-07-15T12:00:00+08:00").getTime(),
+            announceTime: new Date("2022-07-19T11:00:00+08:00").getTime(),
+            expiredTime: new Date("2022-07-21T12:00:00+08:00").getTime(),
           },
           {
             link: "",
@@ -674,7 +672,7 @@ export default {
             link: "",
             id: "c6",
             title: "舞蹈班<br>新生線上報到",
-            time: "7月19日11:00<br>~7月20日11:00",
+            time: "7月19日11:00<br>~7月20日12:00",
           },
         ],
       },
@@ -694,6 +692,14 @@ export default {
             announceTime: null,
             expiredTime: null,
           },
+          {
+            title: "學校簡報1",
+            link: "https://drive.google.com/file/d/1Dgj6tUN1JNS22Dc6OIrYsD9JQH3IYNQM/preview",
+          },
+          {},
+          {},
+          {},
+          {},
         ],
       },
       {
@@ -709,73 +715,74 @@ export default {
             {
               link: "",
               id: "m1-1",
-              title: "學生住宿申請鏈結表單",
-            },
-            {
-              link: "",
-              id: "m1-2",
-              title: "學雜費減免申請說明",
-            },
-          ],
-          [
-            {
-              link: "",
-              id: "m2-1",
               title: "新生線上訂購校服<br>(7/21鏈結飛宇系統)",
             },
             {
               link: "",
-              id: "m2-2",
+              id: "m1-2",
               title: "新生線上訂購校服流程說明",
             },
             {
               link: "",
-              id: "m2-3",
+              id: "m1-3",
               title: "復興新生校服介紹",
             },
           ],
           [
             {
               link: "",
-              id: "m3-1",
-              title: "就學貸款申請鏈結表單",
+              id: "m2-1",
+              title: "新生填寫資料<br>(7/21鏈結飛宇系統)",
             },
             {
               link: "",
-              id: "m3-2",
-              title: "就學貸款申請說明",
+              id: "m2-2",
+              title: "校務系統新生填寫應備<br>資料說明",
+            },
+            {
+              link: "",
+              id: "m2-3",
+              title: "校務系統高一多元選修<br>選課說明",
+            },
+            {
+              link: "",
+              id: "m2-4",
+              title: "學生受款帳戶登記說明",
+            },
+            {
+              link: "",
+              id: "m2-5",
+              title: "教育部12年國教<br>免學費補助查調說明",
+            },
+            {
+              link: "",
+              id: "m2-6",
+              title: "數位學生證整合服務說明",
             },
           ],
           [
             {
               link: "",
+              id: "m3-1",
+              title: "學生住宿申請鏈結表單",
+            },
+            {
+              link: "",
+              id: "m3-2",
+              title: "學雜費減免申請說明",
+            },
+          ],
+
+          [
+            {
+              link: "",
               id: "m4-1",
-              title: "新生填寫資料<br>(7/21鏈結飛宇系統)",
+              title: "就學貸款申請鏈結表單",
             },
             {
               link: "",
               id: "m4-2",
-              title: "校務系統新生填寫應備<br>資料說明",
-            },
-            {
-              link: "",
-              id: "m4-3",
-              title: "校務系統高一多元選修<br>選課說明",
-            },
-            {
-              link: "",
-              id: "m4-4",
-              title: "學生受款帳戶登記說明",
-            },
-            {
-              link: "",
-              id: "m4-5",
-              title: "教育部12年國教<br>免學費補助查調說明",
-            },
-            {
-              link: "",
-              id: "m4-6",
-              title: "數位學生證整合服務說明",
+              title: "就學貸款申請說明",
             },
           ],
           [
@@ -799,21 +806,21 @@ export default {
           {
             link: "",
             id: "d1",
-            title: "新生始業輔導",
-            title2: "實施計畫",
-            time: "(8/16公告)",
-          },
-          {
-            link: "",
-            id: "d2",
             title: "高一編班座號學號",
             time: "(8/19公告)",
           },
           {
             link: "",
-            id: "d3",
+            id: "d2",
             title: "新生住宿名單",
             time: "(8/19 16:00公告)",
+          },
+          {
+            link: "",
+            id: "d3",
+            title: "新生始業輔導",
+            title2: "實施計畫",
+            time: "(8/16公告)",
           },
           {
             link: "",
@@ -844,29 +851,29 @@ export default {
           {
             link: "",
             id: "d8",
+            title: "110-1學期行事曆",
+            time: "(8/24公告)",
+          },
+          {
+            link: "",
+            id: "d9",
             title: "學生信箱與",
             title2: "單一身分帳號",
             time: "(8/23公告)",
           },
           {
             link: "",
-            id: "d9",
+            id: "d10",
             title: "學生家長",
             title2: "校務行政系統說明",
             time: "(8/23公告)",
           },
           {
             link: "",
-            id: "d10",
+            id: "d11",
             title: "校園繳費系統",
             title2: "親子身分綁定",
             time: "(8/23公告)",
-          },
-          {
-            link: "",
-            id: "d11",
-            title: "111-1學期行事曆",
-            time: "(8/24公告)",
           },
         ],
       },
@@ -922,27 +929,27 @@ export default {
           {
             link: "",
             id: "p10",
-            title: "合作社介紹<br>(合作社)",
-          },
-          {
-            link: "",
-            id: "p11",
             title: "社團一覽表<br>(訓育組)",
           },
           {
             link: "",
+            id: "p11",
+            title: "獎學金(註冊組)<br>就學扶助(生輔組)",
+          },
+          {
+            link: "",
             id: "p12",
-            title: "獎學金<br>(註冊組)",
+            title: "111學生家長手冊<br>(生輔組)",
           },
           {
             link: "",
             id: "p13",
-            title: "就學扶助<br>(生輔組)",
+            title: "輔導室介紹<br>(輔導室)",
           },
           {
             link: "",
             id: "p14",
-            title: "111學生家長手冊<br>(生輔組)",
+            title: "學生學習歷程檔案<br>(輔導室)",
           },
           {
             link: "",
@@ -952,21 +959,16 @@ export default {
           {
             link: "",
             id: "p16",
-            title: "輔導室介紹<br>(輔導室)",
+            title: "合作社介紹<br>(合作社)",
           },
           {
             link: "",
             id: "p17",
-            title: "學生學習歷程檔案<br>(輔導室)",
-          },
-          {
-            link: "",
-            id: "p18",
             title: "教室位置平面圖<br>(設備組)",
           },
           {
             link: "",
-            id: "p19",
+            id: "p18",
             title: "交通圖、接駁車<br>(生輔組)",
           },
         ],
