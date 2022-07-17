@@ -5,21 +5,21 @@
     class="fixed inset-0 z-[99] flex h-screen w-screen items-center justify-center bg-black/60 px-3 py-5"
   >
     <div
-      class="relative flex w-full flex-col items-center justify-center gap-6 rounded-xl border-4 border-[#EC6261] bg-white p-12 md:max-w-lg"
+      class="relative flex w-full flex-col items-center justify-center gap-6 rounded-xl border-8 border-[#EC6261] bg-white p-12 md:max-w-lg"
     >
-      <h2 class="text-center text-3xl">重要事項</h2>
+      <h2 class="text-center text-3xl font-bold">重要事項</h2>
       <div id="important-link" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <a
           target="_blank"
           :href="datas[1].details[0].link"
-          class="cursor-pointer rounded-md bg-[#34559D] p-4 text-center align-middle text-lg text-white"
+          class="cursor-pointer rounded-md bg-[#fecb07] p-4 text-center align-middle text-lg"
         >
           {{ datas[1].details[0].title }}
         </a>
         <a
           target="_blank"
           :href="datas[1].details[1].link"
-          class="flex cursor-pointer items-center justify-center rounded-md bg-[#34559D] py-4 px-8 text-center text-lg text-white"
+          class="flex cursor-pointer items-center justify-center rounded-md bg-[#fecb07] py-4 px-8 text-center text-lg"
         >
           <p>{{ datas[1].details[1].title }}</p>
         </a>
