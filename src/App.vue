@@ -1,4 +1,38 @@
 <template>
+  <!-- 重要事項 -->
+  <div
+    id="model"
+    class="fixed inset-0 z-[99] flex h-screen w-screen items-center justify-center bg-black/60 px-3 py-5"
+  >
+    <div
+      class="relative flex w-full flex-col items-center justify-center gap-6 rounded-xl border-4 border-[#EC6261] bg-white p-12 md:max-w-lg"
+    >
+      <h2 class="text-center text-3xl">重要事項</h2>
+      <div id="important-link" class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <a
+          target="_blank"
+          :href="datas[1].details[0].link"
+          class="cursor-pointer rounded-md bg-[#34559D] p-4 text-center align-middle text-lg text-white"
+        >
+          {{ datas[1].details[0].title }}
+        </a>
+        <a
+          target="_blank"
+          :href="datas[1].details[1].link"
+          class="flex cursor-pointer items-center justify-center rounded-md bg-[#34559D] py-4 px-8 text-center text-lg text-white"
+        >
+          <p>{{ datas[1].details[1].title }}</p>
+        </a>
+      </div>
+      <div id="closeTag" @click="close()" class="absolute top-4 right-6">
+        <span
+          class="cursor-pointer text-2xl text-gray-500 hover:font-bold hover:text-black"
+        >
+          &times;
+        </span>
+      </div>
+    </div>
+  </div>
   <!-- 選單 -->
   <div class="fixed top-0 z-40">
     <div
@@ -26,7 +60,7 @@
           :href="list.link"
           :key="list.id"
           class="mb-2 flex h-[10vw] items-center justify-center rounded-[5px] bg-[#EC6261] md:h-[38.4px]"
-          >{{ list.name }}
+          >{{ list.title }}
         </a>
       </li>
     </ul>
@@ -93,25 +127,36 @@
     <div
       class="mt-5 grid grid-cols-1 items-center justify-center gap-5 md:grid-cols-3 md:gap-3"
     >
-      <button
+      <a
         v-for="check in datas[0].details"
+        target="_blank"
         :href="check.link"
         :key="check.id"
-        class="flex h-[62.5vw] w-[62.5vw] flex-col items-center justify-center rounded-[20px] bg-[#34559D] text-center text-[6.25vw] font-semibold leading-[7vw] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-0 md:h-[240px] md:w-[240px] md:text-[24px] md:leading-[28.8px] md:hover:border-[5px] md:hover:border-white"
+        :id="check.id"
+        :class="{ _disabled: isdisabled }"
+        class="flex h-[62.5vw] w-[62.5vw] flex-col items-center justify-center rounded-[20px] bg-[#34559D] text-center text-[6.25vw] font-semibold leading-[7vw] md:h-[240px] md:w-[240px] md:text-[24px] md:leading-[28.8px] md:hover:border-[5px] md:hover:border-white"
       >
-        <p class="pointer-events-none text-white" v-html="check.name"></p>
+        <p class="pointer-events-none text-white" v-html="check.title"></p>
         <p class="pointer-events-none text-[#EC6261]" v-html="check.time"></p>
-        <p class="pointer-events-none text-white" v-html="check.name2"></p>
+        <p class="pointer-events-none text-white" v-html="check.title2"></p>
         <p class="pointer-events-none text-[#EC6261]" v-html="check.time2"></p>
-      </button>
+      </a>
     </div>
     <div class="h-5 md:h-10"></div>
-    <div class="w-full text-center">
+    <div class="w-full space-y-7 text-center">
       <a
-        href=""
+        :href="datas[1].details[0].link"
+        target="_blank"
+        class="mx-auto flex w-[87.5vw] items-center justify-center rounded-xl bg-[#E8C541] py-5 text-[6.25vw] font-semibold text-white md:h-[80px] md:w-3/4 md:py-10 md:px-20 md:text-[24px] md:hover:border-[5px] md:hover:border-white"
+      >
+        <p>{{ datas[1].details[0].title }}</p>
+      </a>
+      <a
+        :href="datas[1].details[1].link"
+        target="_blank"
         class="mx-auto flex h-[15.625vw] w-[87.5vw] items-center justify-center rounded-xl bg-[#E8C541] text-[6.25vw] font-semibold text-white md:h-[80px] md:w-3/4 md:text-[24px] md:hover:border-[5px] md:hover:border-white"
       >
-        <p>選課輔導手冊(普通班)</p>
+        <p>{{ datas[1].details[1].title }}</p>
       </a>
     </div>
     <div class="h-7 md:h-14"></div>
@@ -142,6 +187,7 @@
     >
       <a
         href=""
+        target="_blank"
         class="z-10 w-[67.812vw] rounded-[10px] border-[3px] border-white bg-[#009A35] py-2 text-center text-[5vw] font-semibold text-white md:w-[660px] md:py-2 md:text-[19.2px] md:hover:shadow-[0_0_15px_#fff]"
       >
         <p class="pointer-events-none">高一家長LINE@群組</p>
@@ -223,9 +269,10 @@
           <a
             :href="matter.link"
             :key="matter.id"
+            target="_blank"
             v-for="matter in datas[3].details[0]"
           >
-            <li v-html="matter.name" class="md:hover:text-[20px]"></li>
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
           </a>
         </ul>
       </div>
@@ -249,9 +296,10 @@
           <a
             :href="matter.link"
             :key="matter.id"
+            target="_blank"
             v-for="matter in datas[3].details[1]"
           >
-            <li v-html="matter.name" class="md:hover:text-[20px]"></li>
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
           </a>
         </ul>
       </div>
@@ -273,9 +321,10 @@
           <a
             :href="matter.link"
             :key="matter.id"
+            target="_blank"
             v-for="matter in datas[3].details[2]"
           >
-            <li v-html="matter.name" class="md:hover:text-[20px]"></li>
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
           </a>
         </ul>
       </div>
@@ -297,9 +346,10 @@
           <a
             :href="matter.link"
             :key="matter.id"
+            target="_blank"
             v-for="matter in datas[3].details[3]"
           >
-            <li v-html="matter.name" class="md:hover:text-[20px]"></li>
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
           </a>
         </ul>
       </div>
@@ -323,9 +373,10 @@
           <a
             :href="matter.link"
             :key="matter.id"
+            target="_blank"
             v-for="matter in datas[3].details[4]"
           >
-            <li v-html="matter.name" class="md:hover:text-[20px]"></li>
+            <li v-html="matter.title" class="md:hover:text-[20px]"></li>
           </a>
         </ul>
       </div>
@@ -348,16 +399,18 @@
     <div
       class="grid grid-cols-1 gap-y-5 gap-x-10 text-[6.25vw] font-semibold text-white md:grid-cols-2 md:text-[24px] lg:grid-cols-3"
     >
-      <button
+      <a
         v-for="date in datas[4].details"
         :href="date.link"
         :key="date.id"
-        class="flex h-[31.25vw] w-[68.75vw] flex-col items-center justify-center rounded-[10px] bg-[#EC6261] text-center disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-0 md:h-[120px] md:w-[264px] md:leading-[28.8px] md:hover:border-[5px] md:hover:border-white"
+        :id="date.id"
+        :class="{ _disabled: isdisabled }"
+        class="flex h-[31.25vw] w-[68.75vw] flex-col items-center justify-center rounded-[10px] bg-[#EC6261] text-center md:h-[120px] md:w-[264px] md:leading-[28.8px] md:hover:border-[5px] md:hover:border-white"
       >
-        <p v-html="date.name"></p>
-        <p v-html="date.name2"></p>
+        <p v-html="date.title"></p>
+        <p v-html="date.title2"></p>
         <p v-html="date.time"></p>
-      </button>
+      </a>
     </div>
   </div>
   <!-- 宣導事項 -->
@@ -374,6 +427,7 @@
     >
       <a
         v-for="pub in datas[5].details"
+        target="_blank"
         :href="pub.link"
         :key="pub.id"
         class="group w-[42.187vw] text-center md:w-[221px] md:hover:w-[206px] md:hover:scale-110"
@@ -386,7 +440,7 @@
             class="absolute left-0 top-0 flex h-[12.5vw] w-[40.625vw] items-center justify-center rounded-full bg-white md:h-[48px] md:w-[200px]"
           >
             <p
-              v-html="pub.name"
+              v-html="pub.title"
               class="text-[3.75vw] font-bold leading-[4.5vw] md:text-[14.4px] md:leading-[17.3px] md:group-hover:text-[17px]"
             ></p>
           </div>
@@ -550,6 +604,10 @@
 </template>
 
 <script>
+function closeModel() {
+  document.getElementById("model").classList.add("hidden");
+}
+
 function jumpFuntion() {
   document.getElementById("jump").classList.toggle("-translate-x-[62.5vw]");
 }
@@ -559,14 +617,16 @@ document.onclick = function (e) {
     document.getElementById("jump").classList.add("-translate-x-[62.5vw]");
   }
 };
-import { isArray } from "@vue/shared";
 import { ref, reactive } from "vue";
 export default {
   setup() {
+    const close = function () {
+      closeModel();
+    };
     const jump = function () {
       jumpFuntion();
     };
-
+    const isdisabled = ref(false);
     const datas = reactive([
       {
         index: 0,
@@ -575,7 +635,8 @@ export default {
           {
             link: "",
             id: "c1",
-            name: "普通班免試<br>新生線上報到<br><span class='text-[5vw] md:text-[20px]'>(優免/安置上傳畢業證書)</span>",
+            title:
+              "普通班免試<br>新生線上報到<br><span class='text-[5vw] md:text-[20px]'>(優免/安置上傳畢業證書)</span>",
             time: "7月19日11:00<br>~7月21日11:00",
             announceTime: new Date("2022-07-19T11:00:00+08:00").getTime(),
             expiredTime: new Date("2022-07-21T11:00:00+08:00").getTime(),
@@ -583,7 +644,7 @@ export default {
           {
             link: "",
             id: "c2",
-            name: "體育班<br>新生上傳畢業證書",
+            title: "體育班<br>新生上傳畢業證書",
             time: "7月19日11:00<br>~7月21日12:00",
             announceTime: new Date("2022-07-13T11:00:00+08:00").getTime(),
             expiredTime: new Date("2022-07-15T12:00:00+08:00").getTime(),
@@ -591,27 +652,28 @@ export default {
           {
             link: "",
             id: "c3",
-            name: "戲劇班<br>正取生線上報到",
+            title: "戲劇班<br>正取生線上報到",
             time: "7月19日09:00<br>~7月20日12:00",
-            name2: "備取生線上報到",
+            title2: "備取生線上報到",
             time2: "7月20日17:00<br>~7月21日12:00",
           },
           {
             link: "",
             id: "c4",
-            name: "音樂班<br>新生線上報到",
+            title: "音樂班<br>新生線上報到",
             time: "7月19日11:00<br>~7月20日12:00",
           },
           {
             link: "",
             id: "c5",
-            name: "美術班<br>新生線上報到<br><span class='text-[5vw] md:text-[20px]'>(已經上傳畢業證書)</span>",
+            title:
+              "美術班<br>新生線上報到<br><span class='text-[5vw] md:text-[20px]'>(已經上傳畢業證書)</span>",
             time: "7月19日11:00<br>~7月20日12:00",
           },
           {
             link: "",
             id: "c6",
-            name: "舞蹈班<br>新生線上報到",
+            title: "舞蹈班<br>新生線上報到",
             time: "7月19日11:00<br>~7月20日11:00",
           },
         ],
@@ -619,12 +681,25 @@ export default {
       {
         index: 1,
         title: "學校簡介",
-        details: [],
+        details: [
+          {
+            title: "復興高中111學年度新生行事曆暨檢核表(新生與家長必看)",
+            link: "https://drive.google.com/file/d/1a2IODRsigIexcUrYrinGcLhsrn7LC4ql/view?usp=sharing",
+            announceTime: null,
+            expiredTime: null,
+          },
+          {
+            title: "選課輔導手冊(普通班)",
+            link: "",
+            announceTime: null,
+            expiredTime: null,
+          },
+        ],
       },
       {
         index: 2,
         title: "新生暑假作業",
-        details: [],
+        details: [{}, {}, {}],
       },
       {
         index: 3,
@@ -634,85 +709,85 @@ export default {
             {
               link: "",
               id: "m1-1",
-              name: "學生住宿申請鏈結表單",
+              title: "學生住宿申請鏈結表單",
             },
             {
               link: "",
               id: "m1-2",
-              name: "學雜費減免申請說明",
+              title: "學雜費減免申請說明",
             },
           ],
           [
             {
               link: "",
               id: "m2-1",
-              name: "新生線上訂購校服<br>(7/21鏈結飛宇系統)",
+              title: "新生線上訂購校服<br>(7/21鏈結飛宇系統)",
             },
             {
               link: "",
               id: "m2-2",
-              name: "新生線上訂購校服流程說明",
+              title: "新生線上訂購校服流程說明",
             },
             {
               link: "",
               id: "m2-3",
-              name: "復興新生校服介紹",
+              title: "復興新生校服介紹",
             },
           ],
           [
             {
               link: "",
               id: "m3-1",
-              name: "就學貸款申請鏈結表單",
+              title: "就學貸款申請鏈結表單",
             },
             {
               link: "",
               id: "m3-2",
-              name: "就學貸款申請說明",
+              title: "就學貸款申請說明",
             },
           ],
           [
             {
               link: "",
               id: "m4-1",
-              name: "新生填寫資料<br>(7/21鏈結飛宇系統)",
+              title: "新生填寫資料<br>(7/21鏈結飛宇系統)",
             },
             {
               link: "",
               id: "m4-2",
-              name: "校務系統新生填寫應備<br>資料說明",
+              title: "校務系統新生填寫應備<br>資料說明",
             },
             {
               link: "",
               id: "m4-3",
-              name: "校務系統高一多元選修<br>選課說明",
+              title: "校務系統高一多元選修<br>選課說明",
             },
             {
               link: "",
               id: "m4-4",
-              name: "學生受款帳戶登記說明",
+              title: "學生受款帳戶登記說明",
             },
             {
               link: "",
               id: "m4-5",
-              name: "教育部12年國教<br>免學費補助查調說明",
+              title: "教育部12年國教<br>免學費補助查調說明",
             },
             {
               link: "",
               id: "m4-6",
-              name: "數位學生證整合服務說明",
+              title: "數位學生證整合服務說明",
             },
           ],
           [
             {
               link: "",
               id: "m5-1",
-              name: "學生住宿申請鏈結表單",
+              title: "學生住宿申請鏈結表單",
             },
             {
               link: "",
               id: "m5-2",
-              name: "學生住宿申請說明",
+              title: "學生住宿申請說明",
             },
           ],
         ],
@@ -724,73 +799,73 @@ export default {
           {
             link: "",
             id: "d1",
-            name: "新生始業輔導",
-            name2: "實施計畫",
+            title: "新生始業輔導",
+            title2: "實施計畫",
             time: "(8/16公告)",
           },
           {
             link: "",
             id: "d2",
-            name: "高一編班座號學號",
+            title: "高一編班座號學號",
             time: "(8/19公告)",
           },
           {
             link: "",
             id: "d3",
-            name: "新生住宿名單",
+            title: "新生住宿名單",
             time: "(8/19 16:00公告)",
           },
           {
             link: "",
             id: "d4",
-            name: "新生始業輔導手冊",
+            title: "新生始業輔導手冊",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d5",
-            name: "開學日實施計畫",
+            title: "開學日實施計畫",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d6",
-            name: "學生開學日",
-            name2: "領取教科書",
+            title: "學生開學日",
+            title2: "領取教科書",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d7",
-            name: "新生開學日",
-            name2: "領取校服",
+            title: "新生開學日",
+            title2: "領取校服",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d8",
-            name: "學生信箱與",
-            name2: "單一身分帳號",
+            title: "學生信箱與",
+            title2: "單一身分帳號",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d9",
-            name: "學生家長",
-            name2: "校務行政系統說明",
+            title: "學生家長",
+            title2: "校務行政系統說明",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d10",
-            name: "校園繳費系統",
-            name2: "親子身分綁定",
+            title: "校園繳費系統",
+            title2: "親子身分綁定",
             time: "(8/23公告)",
           },
           {
             link: "",
             id: "d11",
-            name: "111-1學期行事曆",
+            title: "111-1學期行事曆",
             time: "(8/24公告)",
           },
         ],
@@ -802,97 +877,97 @@ export default {
           {
             link: "",
             id: "p1",
-            name: "語文競賽增額報名<br>(教學組)",
+            title: "語文競賽增額報名<br>(教學組)",
           },
           {
             link: "",
             id: "p2",
-            name: "學科增能<br>(實研組)",
+            title: "學科增能<br>(實研組)",
           },
           {
             link: "",
             id: "p3",
-            name: "彈性學習說明<br>(實研組)",
+            title: "彈性學習說明<br>(實研組)",
           },
           {
             link: "",
             id: "p4",
-            name: "跑班課程說明<br>(實研組)",
+            title: "跑班課程說明<br>(實研組)",
           },
           {
             link: "",
             id: "p5",
-            name: "臺英學士培育計畫<br>(實研組)",
+            title: "臺英學士培育計畫<br>(實研組)",
           },
           {
             link: "",
             id: "p6",
-            name: "圖書館介紹<br>(圖書館)",
+            title: "圖書館介紹<br>(圖書館)",
           },
           {
             link: "",
             id: "p7",
-            name: "圖書館推廣活動<br>(圖書館)",
+            title: "圖書館推廣活動<br>(圖書館)",
           },
           {
             link: "",
             id: "p8",
-            name: "自主學習規範<br>(圖書館)",
+            title: "自主學習規範<br>(圖書館)",
           },
           {
             link: "",
             id: "p9",
-            name: "志工、工讀生招募<br>(圖書館)",
+            title: "志工、工讀生招募<br>(圖書館)",
           },
           {
             link: "",
             id: "p10",
-            name: "合作社介紹<br>(合作社)",
+            title: "合作社介紹<br>(合作社)",
           },
           {
             link: "",
             id: "p11",
-            name: "社團一覽表<br>(訓育組)",
+            title: "社團一覽表<br>(訓育組)",
           },
           {
             link: "",
             id: "p12",
-            name: "獎學金<br>(註冊組)",
+            title: "獎學金<br>(註冊組)",
           },
           {
             link: "",
             id: "p13",
-            name: "就學扶助<br>(生輔組)",
+            title: "就學扶助<br>(生輔組)",
           },
           {
             link: "",
             id: "p14",
-            name: "111學生家長手冊<br>(生輔組)",
+            title: "111學生家長手冊<br>(生輔組)",
           },
           {
             link: "",
             id: "p15",
-            name: "學習評量相關規定<br>(註冊組)",
+            title: "學習評量相關規定<br>(註冊組)",
           },
           {
             link: "",
             id: "p16",
-            name: "輔導室介紹<br>(輔導室)",
+            title: "輔導室介紹<br>(輔導室)",
           },
           {
             link: "",
             id: "p17",
-            name: "學生學習歷程檔案<br>(輔導室)",
+            title: "學生學習歷程檔案<br>(輔導室)",
           },
           {
             link: "",
             id: "p18",
-            name: "教室位置平面圖<br>(設備組)",
+            title: "教室位置平面圖<br>(設備組)",
           },
           {
             link: "",
             id: "p19",
-            name: "交通圖、接駁車<br>(生輔組)",
+            title: "交通圖、接駁車<br>(生輔組)",
           },
         ],
       },
@@ -903,52 +978,60 @@ export default {
           {
             link: "#timeline",
             id: "l1",
-            name: "新生入學時程表",
+            title: "新生入學時程表",
           },
           {
             link: "#register",
             id: "l2",
-            name: "新生線上報到",
+            title: "新生線上報到",
           },
           {
             link: "#briefing",
             id: "l3",
-            name: "入學說明簡報",
+            title: "入學說明簡報",
           },
           {
             link: "#line",
             id: "l4",
-            name: "高一家長Line@群組",
+            title: "高一家長Line@群組",
           },
           {
             link: "#homework",
             id: "l5",
-            name: "新生暑假作業",
+            title: "新生暑假作業",
           },
           {
             link: "#matters",
             id: "l6",
-            name: "新生應辦及選辦事項",
+            title: "新生應辦及選辦事項",
           },
           {
             link: "#arrive-date",
             id: "l7",
-            name: "新生實體到校日期",
+            title: "新生實體到校日期",
           },
           {
             link: "#publicity",
             id: "l8",
-            name: "新生其他宣導事項",
+            title: "新生其他宣導事項",
           },
           {
             link: "#profile",
             id: "l9",
-            name: "學校簡介",
+            title: "學校簡介",
           },
         ],
       },
     ]);
-
+    const timecheck = function (i) {
+      datas[i].details.filter((x) => {
+        if (x.announceTime > Date.now() || x.expiredTime < Date.now()) {
+          return (isdisabled.value = true);
+        } else {
+          return (isdisabled.value = false);
+        }
+      });
+    };
     const url = "https://freshman-api.fhsh.tp.edu.tw/api/v1/fresh-datas";
     fetch(url)
       .then((response) => {
@@ -959,21 +1042,30 @@ export default {
           if (jsonData.datas[i].details.length !== 0) {
             datas[i].details = jsonData.datas[i].details;
           }
-
-          // 把時間超過的資料抓出來做陣列,但想不到如何抓原本的元素
-          // datas[i].details
-          //   .filter(
-          //     (x) => x.announceTime > Date.now() || x.expiredTime < Date.now()
-          //   )
+          // not working
+          // datas[i].details.filter((x) => {
+          //   if (x.announceTime < Date.now() && x.expiredTime > Date.now()) {
+          //     isdisabled.value = false;
+          //   } else if (x.announceTime < Date.now()) {
+          //     isdisabled.value = false;
+          //   } else {
+          //     isdisabled.value = true;
+          //   }
+          // });
         }
+
+        // datas[4].details.forEach((x) => if(x.announceTime));
       })
       .catch((err) => {
         console.log(err);
       });
 
     return {
+      close,
       jump,
       datas,
+      isdisabled,
+      timecheck,
     };
   },
 };
