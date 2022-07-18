@@ -1065,7 +1065,7 @@ export default {
       .then((jsonData) => {
         for (var i = 0; i < 6; i++) {
           if (jsonData.datas[i].details.length !== 0) {
-            // datas[i].details = jsonData.datas[i].details;
+            datas[i].details = jsonData.datas[i].details;
           }
           // not working
           // datas[i].details.filter((x) => {
