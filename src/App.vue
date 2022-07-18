@@ -89,6 +89,16 @@
       />
       <img src="../public/assets/Timeline.png" class="hidden md:flex" alt="" />
     </div>
+    <div class="w-full pt-10 text-center">
+      <a
+        :href="datas[1].details[0].link"
+        target="_blank"
+        class="mx-auto flex w-[87.5vw] items-center justify-center rounded-xl bg-[#EC6261] py-5 text-[6.25vw] font-semibold text-white md:h-[80px] md:w-3/4 md:py-10 md:px-20 md:text-[24px] md:hover:border-[5px] md:hover:border-white"
+      >
+        <p>{{ datas[1].details[0].title }}</p>
+      </a>
+    </div>
+
     <div class="w-full">
       <img src="../public/assets/Background1.jpeg" alt="" />
     </div>
@@ -144,13 +154,6 @@
     </div>
     <div class="h-5 md:h-10"></div>
     <div class="w-full space-y-7 text-center">
-      <a
-        :href="datas[1].details[0].link"
-        target="_blank"
-        class="mx-auto flex w-[87.5vw] items-center justify-center rounded-xl bg-[#E8C541] py-5 text-[6.25vw] font-semibold text-white md:h-[80px] md:w-3/4 md:py-10 md:px-20 md:text-[24px] md:hover:border-[5px] md:hover:border-white"
-      >
-        <p>{{ datas[1].details[0].title }}</p>
-      </a>
       <a
         :href="datas[1].details[1].link"
         target="_blank"
@@ -705,7 +708,27 @@ export default {
       {
         index: 2,
         title: "新生暑假作業",
-        details: [{}, {}, {}],
+        details: [
+          {
+            title: "111學年度高一新生暑假作業說明(開學第一週交給任課老師)",
+            link: "https://drive.google.com/file/d/1FhXRCiuQYCqAGAbyEPuPbKbHiHdEOiI5/view?usp=sharing",
+            announceTime: null,
+            expiredTime: null,
+          },
+          {
+            title: "高一數學銜接教材~復興高中新生暑假作業版(請列印演練第1~8頁)",
+            link: "https://drive.google.com/file/d/1XbUCOZdblxAbRERT6ErD42F2XkM_TVJT/view?usp=sharing",
+            announceTime: null,
+            expiredTime: null,
+          },
+          {
+            title:
+              "高一數學銜接教材~龍騰出版社9單元51頁完整版(歡迎參考_免寫免交)",
+            link: "https://drive.google.com/file/d/1y6thma_fMuk6Y5j60laz3jzlkpeTVrTm/view?usp=sharing",
+            announceTime: null,
+            expiredTime: null,
+          },
+        ],
       },
       {
         index: 3,
@@ -715,7 +738,7 @@ export default {
             {
               link: "",
               id: "m1-1",
-              title: "新生線上訂購校服<br>(7/21鏈結飛宇系統)",
+              title: "新生線上訂購校服<br>(7/21鏈結校務系統)",
             },
             {
               link: "",
@@ -732,7 +755,7 @@ export default {
             {
               link: "",
               id: "m2-1",
-              title: "新生填寫資料<br>(7/21鏈結飛宇系統)",
+              title: "新生填寫資料<br>(7/21鏈結校務系統)",
             },
             {
               link: "",
@@ -1042,7 +1065,7 @@ export default {
       .then((jsonData) => {
         for (var i = 0; i < 6; i++) {
           if (jsonData.datas[i].details.length !== 0) {
-            datas[i].details = jsonData.datas[i].details;
+            // datas[i].details = jsonData.datas[i].details;
           }
           // not working
           // datas[i].details.filter((x) => {
